@@ -4,8 +4,13 @@ import os
 
 load_dotenv()
 
+user = os.getenv("MONGO_USERNAME")
+pwd = os.getenv("MONGO_PASSWORD")
+cluster = os.getenv("MONGO_CLUSTER")
+params = os.getenv("MONGO_PARAMS")
+
 def get_mongo_connection():
-    uri = os.getenv("MONGO_URI")
+    uri = f"mongodb+srv://{user}:{pwd}@{cluster}/?{params}"
     return MongoClient(uri)
 
 def get_collection():
