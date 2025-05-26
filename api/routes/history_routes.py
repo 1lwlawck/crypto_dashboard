@@ -3,8 +3,12 @@ from api.services.history_service import get_history_data, get_all_symbols_data
 
 history_bp = Blueprint("history", __name__)
 
+
 @history_bp.route("/")
 def index():
+    """
+    Index route for the Crypto Insight API.
+    """
     return {
         "message": "Crypto Insight API is live!",
         "endpoints": {

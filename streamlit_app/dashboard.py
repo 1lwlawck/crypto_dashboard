@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 # ---------------- FUNGSI ----------------
+API_BASE = "https://data-crypto.up.railway.app/api"
 
 def line_chart_compare(df):
     df['scraped_at'] = pd.to_datetime(df['scraped_at'])
@@ -41,7 +42,7 @@ def plot_top_gainers_losers(df_return):
     return fig
 
 def fetch_history(symbol):
-    res = requests.get(f"http://localhost:5000/history/{symbol}")
+    res = requests.get(f"{API_BASE}/history/{symbol}")
     if res.status_code == 200:
         df = pd.DataFrame(res.json())
         df['symbol'] = symbol
@@ -58,7 +59,7 @@ tab1, tab2 = st.tabs(["📈 Perbandingan Kinerja", "📊 Top Gainers & Losers"])
 # ====================== TAB 1 ======================
 with tab1:
     try:
-        res = requests.get("http://localhost:5000/symbols")
+        res = requests.get(f"{API_BASE}/symbols")
         symbols_all = sorted(res.json().get("symbols", []))
     except Exception as e:
         st.error(f"❌ Gagal ambil daftar simbol: {e}")
@@ -80,7 +81,7 @@ with tab1:
 # ====================== TAB 2 ======================
 with tab2:
     try:
-        res = requests.get("http://localhost:5000/history/all")
+        res = requests.get(f"{API_BASE}/history/all")
         if res.status_code == 200:
             df_all = pd.DataFrame(res.json())
         else:
