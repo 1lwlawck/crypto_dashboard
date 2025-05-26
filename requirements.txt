@@ -6,3 +6,23 @@ pandas
 streamlit
 plotly
 pycoingecko
+
+# === Core Python Packages ===
+pandas
+requests
+python-dotenv
+
+# === MongoDB ===
+pymongo
+dnspython
+
+# === Backend Flask API ===
+flask
+flask-cors
+
+# === Frontend Streamlit ===
+streamlit
+plotly
+
+# === Optional (visual improvement & debug) ===
+tqdm
