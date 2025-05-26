@@ -3,6 +3,17 @@ from api.services.history_service import get_history_data, get_all_symbols_data
 
 history_bp = Blueprint("history", __name__)
 
+@history_bp.route("/")
+def index():
+    return {
+        "message": "Crypto Insight API is live!",
+        "endpoints": {
+            "Get historical data (per symbol)": "/history/<symbol>",
+            "Get all symbols": "/symbols",
+            "Get all historical data": "/history/all"
+        }
+    }
+
 @history_bp.route("/history/<symbol>", methods=["GET"])
 def get_history(symbol):
     df = get_history_data(symbol)
