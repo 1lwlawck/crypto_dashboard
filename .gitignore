@@ -1,0 +1,25 @@
+# 👇 Python & virtualenv
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+venv/
+*.log
+
+# 👇 Jupyter/VSCode
+.ipynb_checkpoints/
+.vscode/
+*.db
+.DS_Store
+
+# 👇 Streamlit specific
+.streamlit/secrets.toml
+*.toml
+
+# 👇 System
+*.swp
+Thumbs.db
